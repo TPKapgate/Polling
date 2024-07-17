@@ -12,9 +12,11 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
 // Routes
-app.use("/questions",queRouter )
-app.use("/options",optRouter)
+app.use("/questions",queRouter )  // This router is for Questions
+app.use("/options",optRouter)     // This router is for options of question
 
 
 
