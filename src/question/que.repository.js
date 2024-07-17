@@ -2,8 +2,10 @@ import mongoose from "mongoose";
 import { queSchema } from "./que.Schema.js";
 import optionModel from "../option/option.Repository.js";
 
+// Create model for questions
 export const queModal = mongoose.model("question",queSchema);
 
+// Create Que
 export const createQue = async (text) =>{
     try{
         console.log(text)
@@ -15,6 +17,7 @@ export const createQue = async (text) =>{
     }
 }
 
+// Get que based on ID
 export const getQue =  async (id)=>{
     try{
         const temp = queModal.findById(id);
@@ -26,6 +29,7 @@ export const getQue =  async (id)=>{
 }
 
 
+// Delete que
 export const deleteQueRepo = async(id)=>{
     try
     {
@@ -33,7 +37,7 @@ export const deleteQueRepo = async(id)=>{
         if (!que) {
             throw new Error('Question not Found not found');
         }
-        // console.log(que.options)
+        // check if there is any option with vote
         const temp = que.options.filter(ele => ele.votes >0)
         console.log(temp)
         if (temp.length >0){
@@ -51,6 +55,7 @@ export const deleteQueRepo = async(id)=>{
     }
 };
 
+// Delete option
 export const deleteoptRepo = async (id)=>{
     try{
         const option = await optionModel.findById(id);
