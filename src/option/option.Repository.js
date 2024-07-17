@@ -11,6 +11,7 @@ export const CreateNewOption = async(text)=>{
     return temp;
 }
 
+// Delete option
 export const deleteoptRepo = async (id)=>{
     try{
         const option = await optionModel.findById(id);
